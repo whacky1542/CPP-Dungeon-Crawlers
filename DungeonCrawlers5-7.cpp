@@ -7,8 +7,9 @@ int gameStart();
 int controlScreen();
 int controlScreenFirst();
 int startIntroFirst();
-int importantFunction();
-int levelOne();
+void importantFunction();
+void openLevelOne();
+void levelOne(double &healthPoints, double &enemyHealth, double attackPoints);
 
 int main()
 {
@@ -19,13 +20,16 @@ int main()
 	return 0;
 }
 
-int importantFunction()
+void importantFunction()
 {
 	int mainMenuInput = 0;
 	int controlScreenInput = 0;
 	bool invalid = true;
 	int startIntroFirstInput = 0;
-	int levelOneInput = 0;
+	int openLevelOneInput = 0;
+	double healthPoints = 10;
+	double attackPoints = 2;
+	double enemyHealth = 0;
 
 	while (invalid == true)
 	{
@@ -40,7 +44,7 @@ int importantFunction()
 			{
 				cout << "You gave the word" << endl;
 				if (cin.get() == '\n')
-				    levelOneInput = levelOne();
+				    openLevelOne();
 				else
 				    cout << "No";
 				
@@ -68,7 +72,7 @@ int importantFunction()
 				invalid = true;
 			}
 
-			return 0;
+		
 		}
 		else if (mainMenuInput == 2)
 		{
@@ -145,11 +149,11 @@ int startIntroFirst()
 	cout << " Hello adventurer! Welcome to the city of Pochinki!" << endl
 		<< " My name is Ralf and I\'ll be your guide to DUNGEON" << endl
 		<< " CRAWLERS. Your goal is to gain fame and fortune by" << endl
-		<< " delving the perilous dungeons just on the edge of" << endl
+		<< " delving into the perilous dungeons just on the edge of" << endl
 		<< " town. It won\'t be easy to do by your lonesome, so" << endl
 		<< " go over to the Blacksmith for weapons and armor," << endl
 		<< " and if you need potions, just visit the Alchemist" << endl
-		<< " over there. When you are ready to delve your first" << endl
+		<< " over there. When you are ready to delve into your first" << endl
 		<< " dungeon, just give the word." << endl
 		<< "------------------------------------------------------" << endl
 		<< " 1 - Give the word" << endl
@@ -163,11 +167,53 @@ int startIntroFirst()
 	return input;
 }
 
-int levelOne()
+void openLevelOne()
 {
     int input = 0;
     cout << endl << endl;
-    cout << "Ralf takes you to the center of the town" << endl;
+    cout << "Ralf takes you to the center of the town. There is a well in the center of the crossroads." << endl;
     cin.get();
-    cout << ""
+    cout << "*Ralph points at the well*" << endl << "This is the first dungeon." << endl
+		 << "1 - What?" << endl
+		 << "2 - The well?" << endl
+		 << "3 - Okay!" << endl
+		 << "4 - Wait! I forgot my glasses!" << endl
+		 << ">";
+	cin >> input;
+	if(input != 3)
+	{
+		cout << "*Ralph pushes you into the well. You scream as you fall for a single second into the three foot deep well.*" << endl;
+		levelOne(healthPoints, enemyHealth, attackPoints);
+	}
+	else
+	{
+		cout << "*You jump into the short well." << endl;
+		levelOne(healthPoints, enemyHealth, attackPoints);
+	}
+}
+void levelOne(double &healthPoints, double &enemyHealth, double attackPoints)
+{
+	enemyHealth = 3;
+	cout << "*You notice a small hole in the wall of the well, just big enough for you to crawl through." << endl;
+	cin.ignore();
+	cin.get();
+	cout << "*You decide to crawl through the hole as Ralf is still watching you from above with a sinister expression." << endl
+		 << "*You stand up and assess your surroundings. You are in a cube-shaped room with a signle door in front of you. There is a rat in the corner, eating a piece of cheese. What do you do?" << endl
+		 << "1 - Open the door" << endl
+		 << "2 - \"En garde!\"" << endl
+		 << ">";
+	cin  >> int input;
+	if (input == 1)
+	{
+		cout << "Too bad, the rat tripped you with its tail. -1 HP";
+		healthPoints -= 1;
+	}
+	else if(input == 2)
+	{
+		cout << "You attack the rat first. -2 HP" endl;
+		enemyHealth -= attackPoints;
+		cout << "Enemy HP: " << enemyHealth << "/3";
+		cout << "The rat gnaws on your toes. -1 HP" << endl;
+		healthPoint -= 1;
+	}
 }
