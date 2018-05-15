@@ -10,3 +10,7 @@ Since this project is only a CPP file, all you need is a compiler such as [this]
 ![mainmenu](https://user-images.githubusercontent.com/31144589/40042949-36c4ff38-57e0-11e8-97a0-1bf433951c86.PNG)
 
 ### Have Fun!
+
+### Contributers:
+RulerBrendan (Brendan Risney)
+Whacky1542 (Alex Johnson)
