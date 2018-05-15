@@ -13,4 +13,4 @@ Since this project is only a CPP file, all you need is a compiler such as [this]
 
 Contributers:
 - RulerBrendan (Brendan Risney)
-- Whacky1542 (Alex Johnson)
+- Whacky1542 (Alex Johnson) 
