@@ -11,6 +11,6 @@ Since this project is only a CPP file, all you need is a compiler such as [this]
 
 ### Have Fun!
 
-### Contributers:
-RulerBrendan (Brendan Risney)
-Whacky1542 (Alex Johnson)
+Contributers:
+- RulerBrendan (Brendan Risney)
+- Whacky1542 (Alex Johnson)
