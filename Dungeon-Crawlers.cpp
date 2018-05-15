@@ -1,4 +1,4 @@
-#include <iostream> 
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -27,7 +27,7 @@ void startScreen()
 	<< "----------------------" << endl
 	<< " By Alex and Brendan " << endl;
 	cin.ignore();
-	cout << endl << endl << endl;
+	cout << endl;
 }
 
 void controls()
@@ -52,7 +52,7 @@ void controls()
 			invalid = true;
 		}
 	}
-	cout << endl << endl << endl;
+	cout << endl;
 	mainMenu();
 }
 
@@ -70,13 +70,13 @@ void mainMenu()
 		cin >> input;
 		if (input == 1)
 		{
-			cout << endl << endl << endl;
+			cout << endl;
 			startGame();
 			invalid = true;
 		}
 		else if (input == 2)
 		{
-			cout << endl << endl << endl;
+			cout << endl;
 			controls2();
 			invalid = true;
 		}
@@ -111,11 +111,11 @@ void controls2()
 		}
 		else
 		{
-			cout << "INVALID INPUT" << endl << endl;
+			cout << "INVALID INPUT" << endl;
 			invalid = true;
 		}
 	}
-	cout << endl << endl << endl;
+	cout << endl;
 }
 
 void startGame()
@@ -124,7 +124,7 @@ void startGame()
 	int playerDamage = 2;
 	int playerDefence = 0;
 	int potion = 0;
-	int gold = 10;
+	int gold = 15;
 	int input = 0;
 	bool invalid = true;
 	while (invalid == true)
@@ -185,7 +185,7 @@ void startGame()
 		}
 		else if (input == 5)
 		{
-			cout << endl << endl << endl;
+			cout << endl;
 			invalid = false;
 		}
 	}
@@ -243,7 +243,7 @@ void startGame2(int &playerHealth, int &playerDamage, int &playerDefence, int &p
 		}
 		else if (input == 5)
 		{
-			cout << endl << endl << endl;
+			cout << endl;
 			invalid = false;
 		}
 	}
@@ -296,7 +296,7 @@ void blacksmith(int &playerDamage, int &playerDefence, int &gold)
         }
         else
         {
-            cout << "INVALID INPUT" << endl << endl;
+            cout << "INVALID INPUT" << endl;
 			invalid = true;
         }
     }
@@ -334,7 +334,7 @@ void alchemist(int &potion, int &gold)
         }
         else
         {
-            cout << "INVALID INPUT" << endl << endl;
+            cout << "INVALID INPUT" << endl;
 			invalid = true;
         }
     }
@@ -400,7 +400,7 @@ void levelOneEntrance(int &playerHealth, int &playerDamage, int playerDefence, i
 		    cin.ignore();
 			cin.get();
 		}
-		cout << endl << endl << endl;
+		cout << endl;
 	}
 }
 
@@ -476,7 +476,7 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
 				}
 				else
 				{
-					cout << "You killed the rat +5 gold" << endl;
+					cout << "You killed the rat +5 gold" << endl << endl;
 					gold += 5;
 				}
 				invalid = false;
@@ -559,7 +559,8 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
     	                << "Underneath the chimes, there is a small rusted chest";
     	                cin.ignore();
     	                cin.get();
-    	                cout << "You open the chest and find 10 gold and a health potion" << endl;
+    	                cout << "You open the chest and find 10 gold and a health potion" << endl
+						<< "After looting the chest, you continue down the hallway" << endl;
     	                potion += 1;
     	                gold += 10;
     	                invalid = false;
@@ -608,9 +609,16 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
             	            }
             	            else if (input == 2)
             	            {
-            	                cout << "You use a potion and gain 3 health" << endl;
-            	                potion -= 1;
-            	                playerHealth += 3;
+								if(potion > 0)
+								{
+					    			playerHealth += 3;
+					    			potion -= 1;
+					    			cout << "You use a potion and now have " << playerHealth << " HP" << endl;
+								}
+								else
+								{
+								    cout << "You do not have any potions" << endl;
+								}
             	            }
             	            else
             	            {
@@ -626,7 +634,8 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
         	            }
         	            else
         	            {
-        	                cout << "You've defeated the skeleton! +10 gold" << endl;
+        	                cout << "You've defeated the skeleton! +10 gold" << endl
+							<< "After defeating the skeleton, you continue down the hallway" << endl;
         	                gold += 10;
         	                cin.ignore();
         	                cin.get();
@@ -640,11 +649,27 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
 	                invalid = false;
 	            }
 	        }
+	        else if (input == 3)
+	        {
+	            cout << "You continue down the hallway, ignoring the doors, until you come across a key" << endl
+	            << "You pick up the key and find that it has an engraving spelling out the words \'Key of Cowardice\'" << endl
+				<< "You don\'t see anything nearby that looks like something you could use it on so you continue down the hallway" << endl;
+	            invalid = false;
+	        }
+	        else
+	        {
+	            cout << "INVALID INPUT" << endl << endl;
+	            invalid = true;
+	        }
 	        if (input2 == 2)
 	        {
 	            invalid = true;
 	        }
 	    }
+	}
+	if (playerHealth > 0)
+	{
+		cout << ""
 	}
 	if (playerHealth > 0)
 	{
