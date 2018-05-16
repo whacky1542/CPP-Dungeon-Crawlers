@@ -253,7 +253,7 @@ void blacksmith(int &playerDamage, int &playerDefence, int &gold)
 {
     int input;
     bool invalid = true;
-    cout << "Welcome to the Blacksmith, my name is Lod. Check out my wares!" << endl;
+    cout << "The blacksmith is oddly quiet" << endl;
     while (invalid == true)
     {
         cout << "1 - Buy sword" << endl
@@ -306,7 +306,7 @@ void alchemist(int &potion, int &gold)
 {
     int input;
     bool invalid = true;
-    cout << "Welcome to the Alcemist, my name is Arcadia. Check out my wares!" << endl;
+    cout << "The alechemist is oddly quiet" << endl;
     while (invalid == true)
     {
         cout << "1 - buy health potion" << endl
@@ -320,7 +320,7 @@ void alchemist(int &potion, int &gold)
             {
                 gold -= 5;
                 potion += 1;
-                cout << "You purchased a potion and now have " << potion << " many" << endl;
+                cout << "You purchased a potion and now have a total of " << potion << endl;
             }
             else
             {
@@ -416,6 +416,8 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
 	int input = 0;
 	int input2 = 0;
 	bool invalid = true;
+	bool cowardiceKey = false;
+	bool sonicRing = false;
 	
 	cout << "You notice a small hole in the wall of the well, just big enough for you to crawl through.";
 	cin.get();
@@ -569,7 +571,7 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
     	            }
     	            else if (input2 == 2)
     	            {
-    	                cout << "You cation away from the door" << endl;
+    	                cout << "You walk away from the door" << endl;
     	                cin.ignore();
     	                cin.get();
     	                invalid = false;
@@ -611,7 +613,11 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
             	            {
 								if(potion > 0)
 								{
-					    			playerHealth += 3;
+					    			playerHealth += 4;
+					    			if (playerHealth > 10)
+					    			{
+					    			    playerHealth = 10;
+					    			}
 					    			potion -= 1;
 					    			cout << "You use a potion and now have " << playerHealth << " HP" << endl;
 								}
@@ -651,10 +657,11 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
 	        }
 	        else if (input == 3)
 	        {
-	            cout << "You continue down the hallway, ignoring the doors, until you come across a key" << endl
+	            cout << "You continue down the hallway, ignoring the doors, until you come across a key with four teeth" << endl
 	            << "You pick up the key and find that it has an engraving spelling out the words \'Key of Cowardice\'" << endl
 				<< "You don\'t see anything nearby that looks like something you could use it on so you continue down the hallway" << endl;
 	            invalid = false;
+	            cowardiceKey = true;
 	        }
 	        else
 	        {
@@ -669,11 +676,236 @@ void levelOne(int &playerHealth, int &playerDamage, int playerDefence, int &poti
 	}
 	if (playerHealth > 0)
 	{
-		cout << ""
+		cout << "At the end of a hallway is a long staircase downwards. You descend into the depths and find a long, wide room with an arched ceiling." << endl 
+		<<"There is a huge door towering over the other end of the room. Intricate, slightly terrifying designs cover it." << endl;
+		cin.ignore();
+		cin.get();
+		cout << "You approach the menacing door and take note of your surroundings. Torches along the walls reveal a shimmering metal object behind dense ivy." << endl
+		<< "1 - Open the door" << endl
+		<< "2 - Examine shining object" << endl
+		<< ">";
+		cin  >> input;
+		if (input == 2)
+		{
+		    cout << "You brush aside the ivy to reveal a lock embedded in the wall." << endl;
+		    if (cowardiceKey == true)
+		    {
+		        cout << "It looks like your key might fit." << endl
+		        << "1 - Try the key" << endl
+		        << "2 - Return to the door" << endl
+		        << ">";
+		        cin  >> input;
+		        if (input == 1)
+		        {
+		            cout << "You press the key into the lock and twist" << endl
+		            << "You hear a faint click, but nothing happens. Perhaps there is another step?" << endl
+		            << "1 - Try the key again" << endl
+		            << "2 - Return to the door" << endl
+		            << ">";
+		            cin >> input;
+		            if(input == 1)
+		            {
+		                cout << "You try again, but nothing happens." << endl;
+		            }
+		            else if(input == 2)
+		            {
+		                cout << "You return to the final door" << endl;
+		            }
+		            else if (input == 4)
+		            {
+		                cout << "You try the key again, but keep twisting it until you hear four clicks" << endl
+		                << "A doorway slides open along the wall next to the lock" << endl
+		                << "You enter the doorway. Inside, you find a golden lockbox. You open the lockbox and find a golden ring with a silver jewel." << endl
+		                << "You place the ring on your left ring finger and return to the final door." << endl << endl;
+		                sonicRing = true;
+		            }
+		        }
+		        else if (input == 2)
+		        {
+		            cout << "You return to the large door and open it" << endl;
+		        }
+		    }
+		    else 
+		    {
+		        cout << "You can't think of anyway to open the lock." << endl
+		        << "You return to the large door and open it" << endl;
+		    }
+		}
+		else if (input == 1)
+		{
+		    cout << "You open the large door and enter the room" << endl << endl;
+		}
+		cout << "Through the large door is a demonic looking room" << endl
+		<< "A wooden altar stands in the center of the room. A red pentagram with a skull centered on it is engraved in the altar" << endl
+		<< "A hooded man is kneeling behind the altar, quietly chanting something" << endl;
+		cin.ignore();
+		cin.get();
+		cout << "You take a step forward, and the man turns around" << endl
+		<< "He removes his hood and reveals his true identity. RALF!" << endl
+		<< "You stare, awestruck, at the now terrifying necromancer that was once your guide" << endl << endl;
+		cin.ignore();
+		cin.get();
+		cout << "Ralf:" << endl
+		<< "So you actually made it this far? I'm quite impressed. Most perish to the rat." << endl
+		<< "Yes, it is I, your friendly guide, Ralf." << endl
+		<< "I shall cleverly explain to you my  overarching plot to create an army of the undead." << endl
+		<< "The townspeople have been enslaved by my magic. You, as well as many adventurers before you, shall be sacrificed to awaken a powerful deity." << endl
+		<< "I was hoping my pets would've done it for me, but I guess I'll have to be the one to take you out." << endl
+		<< "As your guide, I shall show you the final destination. The next life. Thousand Hands!" << endl
+		<< "A multitude of decaying hands erupt from the ground, attacking you."
+		<< "You narrowly jump away from the hands before they get the chance to hurt you." << endl;
+		
+		if(sonicRing == true)
+		{
+		    while (enemyStats[2][0] > 0)
+	            {
+    	            if (playerHealth > 0)
+    	            {
+        	            while (invalid == true)
+        	            {
+            	            cout << "What will you do?" << endl
+            	            << "1 - Attack (" << (playerDamage * 2) << " damage)" << endl
+            	            << "2 - Use a potion (" << potion << ")" << endl
+            	            << ">";
+            	            cin >> input;
+            	            if (input == 1)
+            	            {
+            	                cout << "You attack Ralf twice for " << (playerDamage * 2) << " damage" << endl;
+            	                enemyStats[2][0] -= (playerDamage * 2);
+            	                cout << "Ralf now has " << enemyStats[2][0] << " health" << endl;
+            	                invalid = false;
+            	            }
+            	            else if (input == 2)
+            	            {
+								if(potion > 0)
+								{
+					    			playerHealth += 4;
+					    			if (playerHealth > 10)
+					    			{
+					    			    playerHealth = 10;
+					    			}
+					    			potion -= 1;
+					    			cout << "You use a potion and now have " << playerHealth << " HP" << endl;
+								}
+								else
+								{
+								    cout << "You do not have any potions" << endl;
+								}
+            	            }
+            	            else
+            	            {
+            	                cout << "INVALID INPUT" << endl;
+            	            }
+        	            }
+        	            if (enemyStats[2][0] > 0)
+        	            {
+        	                cout << "Ralf attacks you for " << enemyStats[2][1] << " damage" << endl;
+        	                playerHealth -= enemyStats[2][1] - playerDefence;
+        	                cout << "You now have " << playerHealth << " health" << endl;
+        	                invalid = true;
+        	            }
+        	            else
+        	            {
+        	                cout << "You have utterly annihilated Ralf" << endl;
+        	            }
+    	            }
+    	            else
+    	            {
+    	                cout << "You have been defeated by Ralf." << endl
+    	                << "GAME OVER";
+    	                invalid = false;
+    	            }
+	            }
+		}
+		else 
+		{
+		    while (enemyStats[2][0] > 0)
+	            {
+    	            if (playerHealth > 0)
+    	            {
+        	            while (invalid == true)
+        	            {
+            	            cout << "What will you do?" << endl
+            	            << "1 - Attack (" << playerDamage << " damage)" << endl
+            	            << "2 - Use a potion (" << potion << ")" << endl
+            	            << ">";
+            	            cin >> input;
+            	            if (input == 1)
+            	            {
+            	                cout << "You attack Ralf for " << (playerDamage * 2) << " damage" << endl;
+            	                enemyStats[2][0] -= playerDamage;
+            	                cout << "Ralf now has " << enemyStats[2][0] << " health" << endl;
+            	                invalid = false;
+            	            }
+            	            else if (input == 2)
+            	            {
+								if(potion > 0)
+								{
+					    			playerHealth += 4;
+					    			if (playerHealth > 10)
+					    			{
+					    			    playerHealth = 10;
+					    			}
+					    			potion -= 1;
+					    			cout << "You use a potion and now have " << playerHealth << " HP" << endl;
+								}
+								else
+								{
+								    cout << "You do not have any potions" << endl;
+								}
+            	            }
+            	            else
+            	            {
+            	                cout << "INVALID INPUT" << endl;
+            	            }
+        	            }
+        	            if (enemyStats[2][0] > 0)
+        	            {
+        	                cout << "Ralf attacks you for " << enemyStats[2][1] << " damage" << endl;
+        	                playerHealth -= enemyStats[2][1] - playerDefence;
+        	                cout << "You now have " << playerHealth << " health" << endl;
+        	                invalid = true;
+        	            }
+        	            else
+        	            {
+        	                cout << "You have defeated Ralf" << endl;
+        	            }
+    	            }
+    	            else
+    	            {
+    	                cout << "You have been defeated by Ralf." << endl
+    	                << "GAME OVER";
+    	                invalid = false;
+    	            }
+	            }
+		}
+		if (playerHealth > 0)
+		{
+		cout << "With this daunting task complete, you look for an exit" << endl;
+							cout << "After finding a small door at the end of the room, you decide to burn the altar with a wall torch" << endl
+							<< "You find yourself at the edge of the forest, just outside of town" << endl
+							<< "You return to the town to find the townspeople roaming, in a daze. The mayor spots you and walks over" << endl;
+        	                cin.ignore();
+        	                cin.get();
+        	                cout << "Mayor:" << endl
+        	                << "I believe you are the one who saved us, yes? I'd like to thank you for sauch a brave feat." << endl
+        	                << "We are forever in your debt. To show our appreciation, I think I should give you this." << endl;
+        	                cin.ignore();
+        	                cin.get();
+        	                cout << "The mayor hands you a red and orange feather." << endl
+        	                << "Mayor:" << endl
+        	                << "This is a Phoenix Feather. If your life ever reaches a critical state, it will heal you entirely." << endl
+        	                << "If you ever need help, I and the townspeople will be more than happy to oblige."
+        	                << endl << endl;
+		}
 	}
+	
 	if (playerHealth > 0)
 	{
-	cout << "You win!!";
+	cout << "You win!!" << endl
+	<< "Thank you for playing DUNGEON CRAWLERS!" << endl
+	<< "We hope you enjoyed!" << endl
+	<< "We plan to continue this project in the future, so stay tuned for the full version!";
 	cin.get();
 	}
 }
